@@ -1,103 +1,204 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import { motion } from "framer-motion";
+import HomeContent from '@/components/home-content';
+import AboutContent from '@/components/about-content';
+import ProjectsContent from '@/components/projects-content';
+import ContactContent from '@/components/contact-content';
+import {
+  User,
+  Briefcase,
+  MessageCircle,
+  Home
+} from "lucide-react";
+import { useState } from "react";
+
+export default function Portfolio() {
+  const [activeSection, setActiveSection] = useState("home");
+
+  const navItems = [
+    { id: "home", label: "Home", icon: Home },
+    { id: "about", label: "About Me", icon: User },
+    { id: "projects", label: "Projects", icon: Briefcase },
+    { id: "contact", label: "Contact Me", icon: MessageCircle },
+  ];
+
+  const renderContent = () => {
+    switch (activeSection) {
+      case "about":
+        return <AboutContent />;
+      case "projects":
+        return <ProjectsContent />;
+      case "contact":
+        return <ContactContent />;
+      default:
+        return <HomeContent />;
+    }
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="min-h-screen bg-black relative overflow-hidden flex items-center justify-center p-4">
+      {/* Animated Background Shapes */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Floating Circles */}
+        <motion.div
+          className="absolute w-64 h-64 bg-white/5 rounded-full blur-xl"
+          animate={{
+            x: [0, 100, 0],
+            y: [0, -100, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 20,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+          style={{ top: "10%", left: "10%" }}
         />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <motion.div
+          className="absolute w-96 h-96 bg-white/3 rounded-full blur-2xl"
+          animate={{
+            x: [0, -150, 0],
+            y: [0, 100, 0],
+            scale: [1, 0.8, 1],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+          style={{ top: "60%", right: "10%" }}
+        />
+
+        <motion.div
+          className="absolute w-48 h-48 bg-white/8 rounded-full blur-xl"
+          animate={{
+            x: [0, 80, 0],
+            y: [0, -80, 0],
+            rotate: [0, 360],
+          }}
+          transition={{
+            duration: 15,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+          style={{ bottom: "20%", left: "20%" }}
+        />
+
+        {/* Geometric Shapes */}
+        <motion.div
+          className="absolute w-32 h-32 bg-white/10 blur-sm"
+          style={{
+            clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
+            top: "30%",
+            right: "30%",
+          }}
+          animate={{
+            rotate: [0, 360],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 18,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+        />
+
+        <motion.div
+          className="absolute w-24 h-24 bg-white/6 blur-sm"
+          style={{
+            clipPath:
+              "polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%)",
+            bottom: "40%",
+            right: "15%",
+          }}
+          animate={{
+            rotate: [360, 0],
+            x: [0, 50, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
+        />
+
+        {/* Floating Dots */}
+        {Array.from({ length: 150 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              y: [0, -20, 0],
+              opacity: [0.3, 0.8, 0.3],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 3,
+              repeat: Number.POSITIVE_INFINITY,
+              delay: Math.random() * 2,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Vertical Navigation Bar - Right Side */}
+      <motion.nav
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.6 }}
+        className="fixed right-22 top-1/2 -translate-y-1/2 z-50"
+      >
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex flex-col gap-5 w-auto">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            return (
+              <motion.button
+                key={item.id}
+                onClick={() => setActiveSection(item.id)}
+                className={`flex items-center justify-center p-2 rounded-xl transition-all duration-300 ${
+                  activeSection === item.id
+                    ? "bg-white/20 text-white"
+                    : "text-gray-400 hover:text-white hover:bg-white/10"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Icon className="w-5 h-5" />
+              </motion.button>
+            );
+          })}
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </motion.nav>
+
+      {/* Glass Container - Same design, different content */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative max-w-5xl w-full mx-auto lg:overflow-hidden"
+      >
+        <div className="relative bg-gradient-to-t from-white/5 to-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-12 md:p-16 lg:p-20 shadow-2xl min-h-[600px]">
+          {/* Glowing border effect */}
+          <div className="absolute inset-0 rounded-2xl border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.02)]" />
+
+          {/* Dynamic Content */}
+          <motion.div
+            key={activeSection}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.4 }}
+            className="flex items-center justify-content-center h-[60vh]"
+          >
+            {renderContent()}
+          </motion.div>
+        </div>
+      </motion.div>
     </div>
   );
 }
