@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { link } from "fs";
+import { ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
 
@@ -9,40 +10,39 @@ export default function ProjectsContent() {
   
     const allProjects = [
       {
-        title: "AI-Powered Web Application",
+        title: "Business Chat Assistant (WhatsApp Chatbot Platform)",
         description:
-          "Full-stack application with AI integration for automated data processing and analysis.",
-        tech: ["React", "Node.js", "Python", "AI/ML"],
+          "Developed a conversational chatbot to enable businesses to manage product browsing, customer inquiries, and orders directly via WhatsApp.Implemented user authentication for the frontend, and in the frontend implemented product management and an order management dashboard for sellers to manage their business easier. Connected the chatbot with DeepSeek LLM to provide intelligent assistant features such as natural language responses and smart query handling.",
+        tech: ["Python", "PostgreSQL", "FastAPI", "LangChain", "Express.js", "Next.js", "Prisma", "WhatsApp business API"],
+        link: "https://github.com/bitazoft/business-chat-assistent"
       },
       {
-        title: "E-Commerce Platform",
+        title: "Document Management System For Law Firm",
         description:
-          "Scalable e-commerce solution with real-time inventory management and payment integration.",
-        tech: ["Next.js", "PostgreSQL", "Stripe", "Redis"],
+          "Contributed to a Laravel-based platform tailored for legal firms to manage sensitive documents and streamline internal workflows securely.Built RESTful APIs, role-based access controll, and performed unit testing and test case implementation to ensure functional stability.\" This project is Team Project associated with SyiGen \"",
+        tech: ["Laravel", "MySQL", "Blade", "Breeze", "Github Actions"],
+        link: "https://www.linkedin.com/posts/syigen-ltd_projectshowcase-lawfirm-lawyer-activity-7298895489251348480-SW3w?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFA6g94BqkGkNhB5bV82PdvHVWg3GdHbS40"
       },
       {
-        title: "Real-Time Chat Application",
+        title: "BizNow (Business News Analytics Platform)",
         description:
-          "Modern chat application with real-time messaging, file sharing, and video calls.",
-        tech: ["React", "Socket.io", "WebRTC", "MongoDB"],
+          "Led the development of core features for BizNow,a real-time business news analytics platform, delivering end-to end solutions across frontend, backend, caching, data-processing and testing.Developed an AI-powered web scraper integrated with a Large Language Model (LLM - Groq) to extract and analyze business-related news in real time.\" This project is Team Project associated with SyiGen \"",
+        tech: [" Next.js", "Redis", "PostgreSQL", "node-schedule", "Prisma", "Groq API"],
+        link: ""
       },
       {
-        title: "Portfolio Management System",
+        title: "Local Farming Support System",
         description:
-          "Investment portfolio tracking system with real-time market data and analytics.",
-        tech: ["Vue.js", "Express", "MySQL", "Chart.js"],
+          "Connects farmers with wholesale buyers to streamline order management, track inventory, and enhance local produce distribution efficiency. The application features a built-in wholesale marketplace, enabling buyers to order fresh produce from local farms. This project addresses real-world challenges in the agricultural supply chain.",
+        tech: ["Angular", "SpringBoot", "MySQL"],
+        link: "https://github.com/Priyankara2003/Local-Farmer-Support-System-FrontEnd"
       },
       {
-        title: "Task Management App",
+        title: "TeaTrack",
         description:
-          "Collaborative task management application with team features and project tracking.",
-        tech: ["React Native", "Firebase", "Redux", "TypeScript"],
-      },
-      {
-        title: "Weather Prediction API",
-        description:
-          "Machine learning-based weather prediction service with RESTful API endpoints.",
-        tech: ["Python", "FastAPI", "TensorFlow", "Docker"],
+          "A mobile app for Sri Lankan tea smallholders and transporters to digitally track monthly tea harvest volumes, factory bills, and income. It imports monthly supplier bills issued by tea factories, automates report generation, and helps farmers analyze income trends, fertilizer usage, and loan deductions over time. Future updates will provide deeper analytics and farm insights based on historical data",
+        tech: ["Flutter", "Dart", "Firebase", "Firbase_Auth", "Feature-Based Architecture"],
+        link: "https://github.com/Priyankara2003/TeaTrack"
       },
     ];
   
@@ -64,7 +64,7 @@ export default function ProjectsContent() {
           Projects
         </h1>
   
-        <div className="space-y-8 max-w-4xl">
+        <div className="space-y-4 w-4xl">
           {currentProjects.map((project, index) => (
             <motion.div
               key={startIndex + index}
@@ -73,10 +73,20 @@ export default function ProjectsContent() {
               transition={{ delay: index * 0.2, duration: 0.6 }}
               className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300"
             >
-              <h3 className="text-xl font-semibold text-white mb-3">
-                {project.title}
-              </h3>
-              <p className="text-gray-300 mb-4 leading-relaxed">
+              <div className="flex flex-wrap">
+                <h3 className="text-xl font-semibold text-white mb-3">
+                  {project.title}
+                </h3>
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-auto inline-flex items-center gap-1 px-3 py-1.5 text-white text-sm transition"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+              </div>
+              <p className="text-gray-300 mb-4 text-[0.8rem] font-extralight tracking-wide leading-relaxed">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">
@@ -94,7 +104,7 @@ export default function ProjectsContent() {
         </div>
   
         {/* Pagination */}
-        <div className="flex items-center justify-center gap-4 mt-8">
+        <div className="flex items-center justify-center gap-4 mt-4">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -134,10 +144,6 @@ export default function ProjectsContent() {
           >
             <ChevronRight className="w-5 h-5" />
           </motion.button>
-        </div>
-  
-        <div className="text-center mt-4 text-gray-400 text-sm">
-          Page {currentPage} of {totalPages} • {allProjects.length} total projects
         </div>
       </motion.div>
     );
