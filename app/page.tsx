@@ -32,7 +32,7 @@ export default function Portfolio() {
       case "contact":
         return <ContactContent />;
       default:
-        return <HomeContent />;
+        return <HomeContent setActiveSection={setActiveSection} />
     }
   };
 

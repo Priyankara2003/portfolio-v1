@@ -2,9 +2,13 @@
 
 import { motion } from "framer-motion";
 import { Download, Mail } from "lucide-react";
+import router from "next/router";
 
-// Content Components
-export default function HomeContent() {
+interface HomeContentProps {
+  setActiveSection: (section: string) => void
+}
+
+export default function HomeContent({ setActiveSection }: HomeContentProps) {
     return (
       <div className="relative z-10 flex flex-column">
         <div>
@@ -49,6 +53,7 @@ export default function HomeContent() {
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
+            onClick={() => setActiveSection("contact")}
             className="py-2 px-4 bg-[rgba(255,255,255,0.7)] hover:bg-white text-black rounded-full font-semibold transition-all duration-300 flex items-center gap-2 justify-center min-w-[140px]"
           >
             <Mail className="w-4 h-4 text-black" />
