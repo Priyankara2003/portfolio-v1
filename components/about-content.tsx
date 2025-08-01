@@ -26,16 +26,25 @@ export default function AboutContent() {
             technical requirements and user-friendly experiences.
           </p>
   
-          <div className="grid md:grid-cols-2 gap-6 mt-8">
-            <div>
+          <div className="grid md:grid-cols-3 gap-6 mt-8">
+            <div className="col-span-2">
               <h3 className="text-xl font-semibold text-white mb-3">Skills</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li>• Full-Stack Development</li>
-                <li>• AI Integration</li>
-                <li>• React & Next.js</li>
-                <li>• Node.js & Python</li>
-                <li>• Database Design</li>
-              </ul>
+              <div className="flex flex-column">
+                <ul className="space-y-2 text-gray-400">
+                  <li>• Full-Stack Development</li>
+                  <li>• AI Integration</li>
+                  <li>• React & Next.js</li>
+                  <li>• Node.js & Python</li>
+                  <li>• Database Design</li>
+                </ul>
+                <ul className="space-y-2 text-gray-400 ml-10">
+                  <li>• Dart & Flutter</li>
+                  <li>• Firebase</li>
+                  <li>• PostgreSQL & MySQL</li>
+                  <li>• SpringBoot & Java EE</li>
+                  <li>• Angular</li>
+                </ul>
+              </div>
             </div>
   
             <div>
@@ -43,7 +52,7 @@ export default function AboutContent() {
                 Experience
               </h3>
               <ul className="space-y-2 text-gray-400">
-                <li>• 3+ Years Development</li>
+                <li>• 1+ Years Development</li>
                 <li>• Multiple Projects Delivered</li>
                 <li>• Team Collaboration</li>
                 <li>• Problem Solving</li>
