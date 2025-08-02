@@ -58,71 +58,73 @@ export default function ProjectsContent() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative z-10"
+        className="relative z-10 h-full sm:h-auto overflow-y-auto md:overflow-visible"
       >
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-8">
-          Projects
-        </h1>
-  
-        <div className="space-y-4 w-4xl">
-          {currentProjects.map((project, index) => (
-            <motion.div
-              key={startIndex + index}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="bg-white/5 border border-white/10 rounded-xl p-6 hover:bg-white/10 transition-all duration-300"
-            >
-              <div className="flex flex-wrap">
-                <h3 className="text-xl font-semibold text-white mb-3">
-                  {project.title}
-                </h3>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-auto inline-flex items-center gap-1 px-3 py-1.5 text-white text-sm transition"
-                >
-                  <ExternalLink className="w-5 h-5" />
-                </a>
-              </div>
-              <p className="text-gray-300 mb-4 text-[0.8rem] font-extralight tracking-wide leading-relaxed">
-                {project.description}
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {project.tech.map((tech, techIndex) => (
-                  <span
-                    key={techIndex}
-                    className="px-3 py-1 bg-white/10 text-gray-300 rounded-full text-sm border border-white/20"
+        <div className="p-2 md:p-0">
+          <h1 className="text-4xl sm:text-4xl md:text-5xl font-bold text-white mb-4 lg:mb-6 lg:text-left mb-8">
+            Projects
+          </h1>
+    
+          <div className="space-y-3 lg:space-y-4 w-full">
+            {currentProjects.map((project, index) => (
+              <motion.div
+                key={startIndex + index}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.2, duration: 0.6 }}
+                className="bg-white/5 border border-white/10 rounded-xl p-4 lg:p-6 hover:bg-white/10 transition-all duration-300"
+              >
+                <div className="flex flex-row sm:flex-row sm:items-start gap-2 sm:gap-0 sm:mb-0 mb-4">
+                  <h3 className="text-lg lg:text-xl font-semibold text-white lg:mb-3 flex-1">
+                    {project.title}
+                  </h3>
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="self-start sm:self-auto sm:ml-auto inline-flex items-center gap-1 px-2 py-1 lg:px-3 lg:py-1.5 text-white text-xs lg:text-sm transition"
                   >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-          ))}
+                    <ExternalLink className="w-4 h-4 lg:w-5 lg:h-5" />
+                  </a>
+                </div>
+                <p className="text-gray-300 mb-3 lg:mb-4 text-xs lg:text-[0.8rem] font-extralight tracking-wide leading-relaxed">
+                  {project.description}
+                </p>
+                <div className="flex flex-wrap gap-1.5 lg:gap-2">
+                  {project.tech.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="px-2 py-1 lg:px-3 lg:py-1 bg-white/10 text-gray-300 rounded-full text-xs lg:text-sm border border-white/20"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-  
-        {/* Pagination */}
-        <div className="flex items-center justify-center gap-4 mt-4">
+        
+        {/* Pagination - Fixed at bottom for mobile, normal for desktop */}
+        <div className="flex items-center justify-center gap-2 lg:gap-4 mt-4 lg:mt-4 p-2 md:p-0">
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
             disabled={currentPage === 1}
-            className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+            className="p-1.5 lg:p-2 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
           >
-            <ChevronLeft className="w-5 h-5" />
+            <ChevronLeft className="w-4 h-4 lg:w-5 lg:h-5" />
           </motion.button>
-  
-          <div className="flex gap-2">
+    
+          <div className="flex gap-1 lg:gap-2">
             {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
               <motion.button
                 key={page}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={() => setCurrentPage(page)}
-                className={`w-10 h-10 rounded-full font-medium transition-all duration-300 ${
+                className={`w-8 h-8 lg:w-10 lg:h-10 rounded-full font-medium transition-all duration-300 text-sm lg:text-base ${
                   currentPage === page
                     ? "bg-white/20 text-white border border-white/30"
                     : "bg-white/5 text-gray-400 hover:bg-white/10 hover:text-white border border-white/10"
@@ -132,7 +134,7 @@ export default function ProjectsContent() {
               </motion.button>
             ))}
           </div>
-  
+    
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -140,9 +142,9 @@ export default function ProjectsContent() {
               setCurrentPage((prev) => Math.min(prev + 1, totalPages))
             }
             disabled={currentPage === totalPages}
-            className="p-2 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
+            className="p-1.5 lg:p-2 bg-white/10 hover:bg-white/20 text-white rounded-full border border-white/20 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300"
           >
-            <ChevronRight className="w-5 h-5" />
+            <ChevronRight className="w-4 h-4 lg:w-5 lg:h-5" />
           </motion.button>
         </div>
       </motion.div>

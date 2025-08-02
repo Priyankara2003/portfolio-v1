@@ -54,7 +54,7 @@ export default function HomeContent({ setActiveSection }: HomeContentProps) {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => setActiveSection("contact")}
-            className="py-2 px-4 bg-[rgba(255,255,255,0.7)] hover:bg-white text-black rounded-full font-semibold transition-all duration-300 flex items-center gap-2 justify-center min-w-[140px]"
+            className="py-2 px-4 lg:bg-[rgba(255,255,255,0.7)] bg-white hover:bg-white text-black rounded-full font-semibold transition-all duration-300 flex items-center gap-2 justify-center min-w-[140px]"
           >
             <Mail className="w-4 h-4 text-black" />
             Catch Me
