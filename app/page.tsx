@@ -182,7 +182,7 @@ export default function Portfolio() {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative max-w-5xl w-full mx-auto lg:overflow-hidden"
       >
-        <div className="relative bg-gradient-to-t from-white/5 to-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-12 md:p-16 lg:p-20 shadow-2xl min-h-[600px]">
+        <div className="relative bg-gradient-to-t from-white/5 to-white/10 backdrop-blur-sm border border-white/30 rounded-2xl p-4 md:p-16 lg:p-20 shadow-2xl min-h-[600px]">
           {/* Glowing border effect */}
           <div className="absolute inset-0 rounded-2xl border border-white/20 shadow-[0_0_50px_rgba(255,255,255,0.02)]" />
 

@@ -10,7 +10,7 @@ interface HomeContentProps {
 
 export default function HomeContent({ setActiveSection }: HomeContentProps) {
     return (
-      <div className="relative z-10 flex flex-column items-center ml-[-7vw] md:ml-[0vw] md:items-start">
+      <div className="relative z-10 flex flex-column items-center md:items-start">
         <div className="text-center md:text-left">
         {/* Name - Large Typography matching reference */}
         <motion.h1
