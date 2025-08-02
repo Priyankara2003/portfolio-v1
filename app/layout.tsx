@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Toaster } from 'sonner';
+import { Analytics } from "@vercel/analytics/next"
 import { Geist, Geist_Mono, Lexend_Zetta } from "next/font/google";
 import "./globals.css";
 
@@ -41,6 +42,7 @@ export default function RootLayout({
       >
         {children}
         <Toaster position="top-right"/>
+        <Analytics />
       </body>
     </html>
   );
