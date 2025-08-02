@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from 'sonner';
 import { Geist, Geist_Mono, Lexend_Zetta } from "next/font/google";
 import "./globals.css";
 
@@ -39,6 +40,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${lexendZetta.variable} antialiased`}
       >
         {children}
+        <Toaster position="top-right"/>
       </body>
     </html>
   );
