@@ -146,21 +146,21 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* Vertical Navigation Bar - Right Side */}
+      {/* Navigation Bar - Bottom for Mobile, Right for Desktop */}
       <motion.nav
-        initial={{ opacity: 0, x: 20 }}
-        animate={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="fixed right-22 top-1/2 -translate-y-1/2 z-50"
+        className="fixed bottom-5 left-1/2 -translate-x-1/2 md:bottom-auto md:left-auto md:right-22 md:top-1/2 md:-translate-y-1/2 md:translate-x-0 z-50"
       >
-        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-3 flex flex-col gap-5 w-auto">
+        <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-2 md:p-3 flex flex-row md:flex-col gap-2 md:gap-5 w-auto">
           {navItems.map((item) => {
             const Icon = item.icon;
             return (
               <motion.button
                 key={item.id}
                 onClick={() => setActiveSection(item.id)}
-                className={`flex items-center justify-center p-2 rounded-xl transition-all duration-300 ${
+                className={`flex items-center justify-center p-2 md:p-2 rounded-xl transition-all duration-300 ${
                   activeSection === item.id
                     ? "bg-white/20 text-white"
                     : "text-gray-400 hover:text-white hover:bg-white/10"
@@ -168,7 +168,7 @@ export default function Portfolio() {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Icon className="w-5 h-5" />
+                <Icon className="w-4 h-4 md:w-5 md:h-5" />
               </motion.button>
             );
           })}

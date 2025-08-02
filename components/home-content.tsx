@@ -10,14 +10,14 @@ interface HomeContentProps {
 
 export default function HomeContent({ setActiveSection }: HomeContentProps) {
     return (
-      <div className="relative z-10 flex flex-column">
-        <div>
+      <div className="relative z-10 flex flex-column items-center ml-[-7vw] md:ml-[0vw] md:items-start">
+        <div className="text-center md:text-left">
         {/* Name - Large Typography matching reference */}
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-5xl md:text-5xl lg:text-6xl font-bold text-white mb-10 leading-tight tracking-wide"
+          className="text-4xl md:text-start text-center md:text-5xl lg:text-6xl font-bold text-white mb-10 leading-tight tracking-wide"
           style={{ fontFamily: "Lexend Zetta" }}
         >
           Srinath
@@ -48,7 +48,7 @@ export default function HomeContent({ setActiveSection }: HomeContentProps) {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7, duration: 0.6 }}
-          className="flex flex-col sm:flex-row gap-4"
+          className="flex flex-col sm:flex-row gap-6 md:gap-4"
         >
           <motion.button
             whileHover={{ scale: 1.02 }}
@@ -71,7 +71,7 @@ export default function HomeContent({ setActiveSection }: HomeContentProps) {
         </motion.div>
         </div>
 
-        <div className="mt-[-7vh]">
+        <div className="mt-[-7vh] hidden lg:block">
           <img src="/hero.png" alt="" className="grayscale absolute w-250 h-auto" />
         </div>
       </div>
